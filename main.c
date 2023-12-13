@@ -53,6 +53,6 @@ int main()
 
 	/*free(commandLine);
 	free(myCommands);*/
-	return (0);
+	return (1);
 }
 
