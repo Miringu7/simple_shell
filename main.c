@@ -43,7 +43,7 @@ int main()
 		if (myChild_pid == -1)
 		{
 			perror("Error");
-			return (1);
+			return (0);
 		}
 	
 		else if (myChild_pid == 0)
