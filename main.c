@@ -31,6 +31,9 @@ int main()
 		myCommands[0] = myCommand;
 		myCommands[1] = NULL;
 
+		if (myCommand == NULL)
+			break;
+
 		myChild_pid = fork();
 
 		if (myChild_pid == -1)
@@ -42,14 +45,14 @@ int main()
 		else if (myChild_pid == 0)
 		{
 			if (execve(myCommand, myCommands, environ) == -1)
+			{
 				perror("./hsh");
-			free(myCommands);
-			free(myCommand);
+				exit(EXIT_FAILURE);
+			}
 		}
 		else
 			myChild_pid = wait(&status);
 
-		free(myCommands);
 		free(myCommand);
 	}
 
