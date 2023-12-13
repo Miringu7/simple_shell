@@ -43,6 +43,8 @@ int main()
 		{
 			if (execve(myCommand, myCommands, environ) == -1)
 				perror("./hsh");
+			free(myCommands);
+			free(myCommand);
 		}
 		else
 			myChild_pid = wait(&status);
