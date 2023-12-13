@@ -42,7 +42,7 @@ int main()
 		else if (myChild_pid == 0)
 		{
 			if (execve(myCommand, myCommands, environ) == -1)
-				perror("Error");
+				perror("./hsh");
 		}
 		else
 			myChild_pid = wait(&status);
