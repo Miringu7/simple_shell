@@ -32,7 +32,11 @@ int main()
 		myCommands[1] = NULL;
 
 		if (myCommand == NULL)
-			break;
+		{
+			free(myCommand);
+			free(myCommands);
+			return (0);
+		}
 
 		myChild_pid = fork();
 
@@ -54,6 +58,7 @@ int main()
 			myChild_pid = wait(&status);
 
 		free(myCommand);
+		free(myCommands);
 	}
 
 	/*free(commandLine);
