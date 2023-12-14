@@ -13,7 +13,7 @@ int main()
 	pid_t myChild_pid;
 	while (1)
 	{
-		printf("myPrompt$: ");
+		printf("#cisfun$ ");
 
 /*		
 		commandLine = _printMyPrompt();
@@ -42,7 +42,7 @@ int main()
 
 		if (myChild_pid == -1)
 		{
-			perror("Error");
+			perror("./shell");
 			return (0);
 		}
 	
@@ -50,7 +50,7 @@ int main()
 		{
 			if (execve(myCommand, myCommands, environ) == -1)
 			{
-				perror("./hsh");
+				perror("./shell");
 				exit(EXIT_FAILURE);
 			}
 		}
