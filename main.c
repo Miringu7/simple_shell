@@ -13,7 +13,7 @@ int main()
 	pid_t myChild_pid;
 	while (1)
 	{
-		printf("#cisfun$ ");
+		write(1,"#cisfun$ ", 9);
 
 /*		
 		commandLine = _printMyPrompt();
