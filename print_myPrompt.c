@@ -15,7 +15,6 @@ char * _printMyPrompt(void)
 	charRead = getline(&commandLine, &len, stdin);
 	if (charRead == -1)
 	{
-		perror("Error");
 		free(commandLine);
 		return (NULL);
 	}

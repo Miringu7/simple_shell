@@ -11,6 +11,7 @@ int main()
 	int status;
 	char *myCommand, **myCommands;
 	pid_t myChild_pid;
+
 	while (1)
 	{
 		write(1,"#cisfun$ ", 9);
@@ -30,14 +31,15 @@ int main()
 		myCommands = malloc(2 * sizeof(char *));
 		myCommands[0] = myCommand;
 		myCommands[1] = NULL;
-
+		
 		if (myCommand == NULL)
 		{
 			free(myCommand);
 			free(myCommands);
-			return (0);
+			write(1, "\n", 1);
+			exit(0);
 		}
-
+		
 		myChild_pid = fork();
 
 		if (myChild_pid == -1)
