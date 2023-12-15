@@ -1,24 +1,24 @@
 #include "shell.h"
 
 /**
-  * _printMyPrompt - prints prompt and user command to screen
-  * Return: scanned command on screen
+  * read_cmdLine - function to read the user command line
+  * Return: user command line
   */
 
-char *_printMyPrompt(void)
+char *read_cmdLine(void)
 {
-	char *commandLine = NULL;
-	size_t len = 0;
-	ssize_t charRead;
+	char *command_line = NULL;
+	size_t cmd_len = 0;
+	ssize_t char_read;
 
-	charRead = getline(&commandLine, &len, stdin);
-	if (charRead == -1)
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "$ ", 2);
+
+	char_read = getline(&command_line, &cmd_len, stdin);
+	if (char_read == -1)
 	{
-		free(commandLine);
+		free(command_line);
 		return (NULL);
 	}
-	if (charRead > 0 && commandLine[charRead - 1] == '\n')
-		commandLine[charRead - 1] = '\0';
-
-	return (commandLine);
+	return (command_line);
 }
