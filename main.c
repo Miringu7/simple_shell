@@ -1,4 +1,4 @@
-#include "header.c"
+#include "shell.h"
 
 /**
   * main - entry point of the program
@@ -37,7 +37,7 @@ int main()
 			free(myCommand);
 			free(myCommands);
 			write(1, "\n", 1);
-			exit(0);
+			break;
 		}
 		
 		myChild_pid = fork();

@@ -1,4 +1,4 @@
-#include "header.c"
+#include "shell.h"
 
 /**
   * _printMyPrompt - prints prompt and user command to screen
