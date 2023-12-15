@@ -2,32 +2,36 @@
 
 /**
   * main - entry point of the program
+  * @ac: argument count
+  * @argv: argument variants
   * Return: always 0
   */
 
-int main(void)
+int main(int ac, char **argv)
 {
-	char *commandLine, **myCommands;
+	char *command_line = NULL, **commands;
+	int status = 0;
+	(void) ac;
+	/*(void) argv;*/
 
 	while (1)
 	{
-		write(1, "#cisfun$ ", 9);
+		command_line = read_cmdLine();
 
-		commandLine = _printMyPrompt();
-
-		if (commandLine == NULL)
+		if (command_line == NULL)
 		{
-			write(1, "\n", 1);
-			return (0);
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
+			return (status);
 		}
-		if (strcmp(commandLine, "exit") == 0)
-			exit(0);
 
-		myCommands = tokenize_command(commandLine);
+		commands = tokenize_cmdLine(command_line);
 
-		find_myCommand(myCommands, environ);
+		if (!commands)
+			continue;
+
+		status = execute_commands(commands, argv);
 	}
-	free(commandLine);
-	free(myCommands);
 	return (0);
+
 }
