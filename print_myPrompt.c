@@ -2,11 +2,10 @@
 
 /**
   * _printMyPrompt - prints prompt and user command to screen
-  * 
   * Return: scanned command on screen
   */
 
-char * _printMyPrompt(void)
+char *_printMyPrompt(void)
 {
 	char *commandLine = NULL;
 	size_t len = 0;
