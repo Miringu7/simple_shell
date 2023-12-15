@@ -1,34 +1,51 @@
 #include "shell.h"
 
 /**
-  * tokenize_command - use function strtok to get tokens
-  * @commandLine: command line to be tokenized
-  * Return: array of tokens
+  * tokenize_cmdLine - function to put command line in a array of commands
+  * @command_line: command string to tokenize
+  * Return: the commands array
   */
 
-char **tokenize_command(char *commandLine)
+char **tokenize_cmdLine(char *command_line)
 {
-	int i = 0;
-	char **my_argv, *delimiter = " ";
-	char *token = strtok(commandLine, delimiter);
+	char *token = NULL, **commands, *temp = NULL;
+	int cmd_num = 0, i = 0;
 
-	my_argv = malloc(10 * sizeof(char *));
-	if (my_argv == NULL)
+	if (!command_line)
+		return (NULL);
+
+	temp = _strdup(command_line);
+	token = strtok(temp, DELIM);
+	if (token == NULL)
 	{
-		perror("Error");
+		free(temp), temp = NULL;
+		free(command_line), command_line = NULL;
 		return (NULL);
 	}
-	while (token != 0)
+
+	while (token)
 	{
-		my_argv[i] = malloc((strlen(token) + 1) * sizeof(char));
-		if (my_argv[i] == NULL)
-			return (NULL);
-
-		strcpy(my_argv[i], token);
-		i++;
-		token = strtok(0, delimiter);
+		cmd_num++;
+		token = strtok(NULL, DELIM);
 	}
+	free(temp), temp = NULL;
+	commands = malloc(sizeof(char *) * (cmd_num + 1));
 
-	my_argv[i + 1] = NULL;
-	return (my_argv);
+	if (!commands)
+	{
+		free(command_line), command_line = NULL;
+		return (NULL);
+	}
+	token = strtok(command_line, DELIM);
+
+	while (token)
+	{
+		commands[i] = _strdup(token);
+		token = strtok(NULL, DELIM);
+		i++;
+	}
+	free(command_line), command_line = NULL;
+	commands[i] = NULL;
+
+	return (commands);
 }
