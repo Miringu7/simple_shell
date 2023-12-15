@@ -15,6 +15,11 @@ int main(void)
 
 		commandLine = _printMyPrompt();
 
+		if (commandLine == NULL)
+		{
+			write(1, "\n", 1);
+			return (0);
+		}
 		if (strcmp(commandLine, "exit") == 0)
 			exit(0);
 
@@ -26,4 +31,3 @@ int main(void)
 	free(myCommands);
 	return (0);
 }
-
