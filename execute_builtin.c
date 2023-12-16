@@ -69,6 +69,7 @@ void exit_shell(char **commands, char **argv, int *status, int idx_num)
 			write(STDERR_FILENO, "\n", 1);
 			free(idx_str);
 			free_arrayOf_string(commands);
+			(*status) = 2;
 			return;
 		}
 	}
