@@ -23,8 +23,8 @@ int builtin_cmd(char *my_command)
 
 /**
   * execute_builtin - executes the builtin command
-  * @commands: user command 
-  * @argv: user input 
+  * @commands: user command
+  * @argv: user input
   * @status: shell status
   * @idx_num: position of the command in the total no of commands executed
   */
