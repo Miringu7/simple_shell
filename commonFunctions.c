@@ -19,6 +19,14 @@ void free_arrayOf_string(char **arr)
 	free(arr), arr = NULL;
 }
 
+/**
+  * printError - prints an error message on the output
+  * @name: argv[0]
+  * @command: user command commands[0]
+  * @idx_num: index number of the command
+  * Return: void
+  */
+
 void printError(char *name, char *command, int idx_num)
 {
 	char *index, *err_message = ": not found\n";
@@ -34,6 +42,12 @@ void printError(char *name, char *command, int idx_num)
 
 	free(index);
 }
+
+/**
+  * _itoa - function to convert integer to string
+  * @idx_num: number to be changed to a string
+  * Return: the index number as a string
+  */
 
 char *_itoa(int idx_num)
 {
@@ -56,6 +70,13 @@ char *_itoa(int idx_num)
 
 	return (_strdup(idx_string));
 }
+
+/**
+  * reverse_string - function to reverse the string outline
+  * @string: string to be reversed
+  * @str_len: the string length
+  * Return: void
+  */
 
 void reverse_string(char *string, int str_len)
 {

@@ -4,6 +4,7 @@
   * execute_commands - function to execute user commands
   * @commands: user commands array
   * @argv: argument variants
+  * @idx_num: index number of the command
   * Return: execution status
   */
 

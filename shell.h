@@ -40,14 +40,19 @@ int execute_commands(char **commands, char **argv, int idx_num);
 /* free_arrayOf_string - frees array from memory */
 void free_arrayOf_string(char **arr);
 
+/* _getenv - function that gets the environment */
 char *_getenv(char *variable);
 
+/* get_mypath - function to locate the path of input command */
 char *get_mypath(char *my_command);
 
+/* printError - prints an error message on the output */
 void printError(char *name, char *command, int idx_num);
 
+/* _itoa - function to convert integer to string */
 char *_itoa(int idx_num);
 
+/* reverse_string - function to reverse the string outline */
 void reverse_string(char *string, int str_len);
 
 #endif

@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+  * _getenv - function that gets the environment
+  * @variable: variable to be checked if present in environ
+  * Return: if variable matches key in environ return value of key else NULL
+  */
+
 char *_getenv(char *variable)
 {
 	char *temp, *key, *value, *env;

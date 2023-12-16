@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+  * get_mypath - function to locate the path of input command
+  * @my_command: command to be checked for presence
+  * Return: if path found returns path, else NULL
+  */
+
 char *get_mypath(char *my_command)
 {
 	char *my_path, *token_dir, *env;
@@ -32,7 +38,7 @@ char *get_mypath(char *my_command)
 			if (stat(my_path, &st) == 0)
 			{
 				free(env);
-				return(my_path);
+				return (my_path);
 			}
 			free(my_path), my_path = NULL;
 			token_dir = strtok(0, ":");
