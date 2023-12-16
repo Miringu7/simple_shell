@@ -10,7 +10,7 @@
 int main(int ac, char **argv)
 {
 	char *command_line = NULL, **commands;
-	int status = 0;
+	int status = 0, idx_num = 0;
 	(void) ac;
 	/*(void) argv;*/
 
@@ -24,13 +24,14 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
+		idx_num++;
 
 		commands = tokenize_cmdLine(command_line);
 
 		if (!commands)
 			continue;
 
-		status = execute_commands(commands, argv);
+		status = execute_commands(commands, argv, idx_num);
 	}
 	return (0);
 

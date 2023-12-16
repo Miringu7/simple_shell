@@ -35,9 +35,19 @@ char *read_cmdLine(void);
 char **tokenize_cmdLine(char *command_line);
 
 /* execute_commands - function to execute user commands */
-int execute_commands(char **commands, char **argv);
+int execute_commands(char **commands, char **argv, int idx_num);
 
 /* free_arrayOf_string - frees array from memory */
 void free_arrayOf_string(char **arr);
+
+char *_getenv(char *variable);
+
+char *get_mypath(char *my_command);
+
+void printError(char *name, char *command, int idx_num);
+
+char *_itoa(int idx_num);
+
+void reverse_string(char *string, int str_len);
 
 #endif

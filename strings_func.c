@@ -111,5 +111,6 @@ char *_strcpy(char *my_dest, char *my_src)
 		i++;
 
 	}
+	my_dest[i] = '\0';
 	return (my_dest);
 }

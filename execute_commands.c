@@ -7,24 +7,33 @@
   * Return: execution status
   */
 
-int execute_commands(char **commands, char **argv)
+int execute_commands(char **commands, char **argv, int idx_num)
 {
+	char *my_path;
 	pid_t child_process;
 	int status;
+
+	my_path = get_mypath(commands[0]);
+	if (!my_path)
+	{
+		printError(argv[0], commands[0], idx_num);
+		free_arrayOf_string(commands);
+		return (0);
+	}
 
 	child_process = fork();
 	if (child_process == 0)
 	{
-		if (execve(commands[0], commands, environ) == -1)
+		if (execve(my_path, commands, environ) == -1)
 		{
-			perror(argv[0]);
+			free(my_path), my_path = NULL;
 			free_arrayOf_string(commands);
-			exit(0);
 		}
 	}
 	else
 	{
 		waitpid(child_process, &status, 0);
+		free(my_path), my_path = NULL;
 		free_arrayOf_string(commands);
 	}
 
