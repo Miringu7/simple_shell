@@ -30,6 +30,11 @@ int execute_commands(char **commands, char **argv, int idx_num)
 	child_process = fork();
 	if (child_process == 0)
 	{
+		if (_strcmp(commands[0], "env") == 0)
+		{
+			_env();
+			free_arrayOf_string(commands);
+		}
 		if (execve(my_path, commands, environ) == -1)
 		{
 			free(my_path), my_path = NULL;
@@ -45,4 +50,3 @@ int execute_commands(char **commands, char **argv, int idx_num)
 
 	return (WEXITSTATUS(status));
 }
-

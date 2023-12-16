@@ -55,4 +55,7 @@ char *_itoa(int idx_num);
 /* reverse_string - function to reverse the string outline */
 void reverse_string(char *string, int str_len);
 
+/* print env when called */
+void _env(void);
+
 #endif
