@@ -10,7 +10,7 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-#define DELIM " \t\n"
+#define DELIM " ;\t\n"
 extern char **environ;
 
 /* read_cmdLine - function to read the user command line */
