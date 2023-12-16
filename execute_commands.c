@@ -14,6 +14,11 @@ int execute_commands(char **commands, char **argv, int idx_num)
 	pid_t child_process;
 	int status;
 
+	if (_strcmp(commands[0], "exit") == 0)
+	{
+		free_arrayOf_string(commands);
+		exit(0);
+	}
 	my_path = get_mypath(commands[0]);
 	if (!my_path)
 	{

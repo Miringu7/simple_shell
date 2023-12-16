@@ -24,6 +24,7 @@ int main(int ac, char **argv)
 				write(STDOUT_FILENO, "\n", 1);
 			return (status);
 		}
+
 		idx_num++;
 
 		commands = tokenize_cmdLine(command_line);
