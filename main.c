@@ -32,7 +32,11 @@ int main(int ac, char **argv)
 		if (!commands)
 			continue;
 
-		status = execute_commands(commands, argv, idx_num);
+		if (builtin_cmd(commands[0]))
+			execute_builtin(commands, argv, status, idx_num);
+
+		else
+			status = execute_commands(commands, argv, idx_num);
 	}
 	return (0);
 
