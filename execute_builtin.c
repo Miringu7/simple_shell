@@ -29,7 +29,7 @@ int builtin_cmd(char *my_command)
   * @idx_num: position of the command in the total no of commands executed
   */
 
-void execute_builtin(char **commands, char **argv, int status, int idx_num)
+void execute_builtin(char **commands, char **argv, int *status, int idx_num)
 {
 	(void) argv;
 	(void) idx_num;
@@ -47,10 +47,10 @@ void execute_builtin(char **commands, char **argv, int status, int idx_num)
   * @status: shell status
   */
 
-void exit_shell(char **commands, int status)
+void exit_shell(char **commands, int *status)
 {
 	free_arrayOf_string(commands);
-	exit(status);
+	exit(*status);
 }
 
 /**
@@ -59,10 +59,9 @@ void exit_shell(char **commands, int status)
   * @status: shell status
   */
 
-void print_myEnviron(char **commands, int status)
+void print_myEnviron(char **commands, int *status)
 {
 	int i;
-	(void) status;
 
 	for (i = 0; environ[i]; i++)
 	{
@@ -70,4 +69,6 @@ void print_myEnviron(char **commands, int status)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	free_arrayOf_string(commands);
+
+	(*status) = 0;
 }

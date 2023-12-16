@@ -68,12 +68,12 @@ void reverse_string(char *string, int str_len);
 int builtin_cmd(char *my_command);
 
 /* execute_builtin - executes the builtin command */
-void execute_builtin(char **commands, char **argv, int status, int idx_num);
+void execute_builtin(char **commands, char **argv, int *status, int idx_num);
 
 /* exit_shell - function to exit from shell */
-void exit_shell(char **commands, int status);
+void exit_shell(char **commands, int *status);
 
 /* print_myEnviron - prints the env when called */
-void print_myEnviron(char **commands, int status);
+void print_myEnviron(char **commands, int *status);
 
 #endif
