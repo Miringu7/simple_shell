@@ -61,6 +61,9 @@ char *_itoa(int idx_num);
 /* reverse_string - function to reverse the string outline */
 void reverse_string(char *string, int str_len);
 
+/* number_positive - checks if number is positive */
+int number_positive(char *str);
+
 
 /* =============== builtin_commands.c ================== */
 
@@ -71,9 +74,12 @@ int builtin_cmd(char *my_command);
 void execute_builtin(char **commands, char **argv, int *status, int idx_num);
 
 /* exit_shell - function to exit from shell */
-void exit_shell(char **commands, int *status);
+void exit_shell(char **commands, char **argv, int *status, int idx_num);
 
 /* print_myEnviron - prints the env when called */
 void print_myEnviron(char **commands, int *status);
+
+/* _atoi - converts string numbers to integers */
+int _atoi(char *str);
 
 #endif

@@ -31,11 +31,8 @@ int builtin_cmd(char *my_command)
 
 void execute_builtin(char **commands, char **argv, int *status, int idx_num)
 {
-	(void) argv;
-	(void) idx_num;
-
 	if (_strcmp(commands[0], "exit") == 0)
-		exit_shell(commands, status);
+		exit_shell(commands, argv, status, idx_num);
 
 	else if (_strcmp(commands[0], "env") == 0)
 		print_myEnviron(commands, status);
@@ -44,13 +41,39 @@ void execute_builtin(char **commands, char **argv, int *status, int idx_num)
 /**
   * exit_shell - function to exit from shell
   * @commands: before exiting it will be freed
+  * @argv: user input
   * @status: shell status
+  * @idx_num: position of the command in the total no of commands executed
   */
 
-void exit_shell(char **commands, int *status)
+void exit_shell(char **commands, char **argv, int *status, int idx_num)
 {
+	int exit_value = (*status);
+	char *idx_str, err_message[] = ": exit: Illegal number: ";
+
+	if (commands[1])
+	{
+		if (number_positive(commands[1]))
+		{
+			exit_value = _atoi(commands[1]);
+		}
+
+		else
+		{
+			idx_str = _itoa(idx_num);
+			write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+			write(STDERR_FILENO, ": ", 2);
+			write(STDERR_FILENO, idx_str, _strlen(idx_str));
+			write(STDERR_FILENO, err_message, _strlen(err_message));
+			write(STDERR_FILENO, commands[1], _strlen(commands[1]));
+			write(STDERR_FILENO, "\n", 1);
+			free(idx_str);
+			free_arrayOf_string(commands);
+			return;
+		}
+	}
 	free_arrayOf_string(commands);
-	exit(*status);
+	exit(exit_value);
 }
 
 /**

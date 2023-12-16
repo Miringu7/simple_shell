@@ -93,3 +93,42 @@ void reverse_string(char *string, int str_len)
 		end--;
 	}
 }
+
+/**
+  * number_positive - checks if number is positive
+  * @str: string number to be checked
+  * Return: 1 if positive else 0
+  */
+
+int number_positive(char *str)
+{
+	int i;
+
+	if (!str)
+		return (0);
+	for (i = 0; str[i]; i++)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+	}
+
+	return (1);
+}
+
+/**
+  * _atoi - converts string numbers to integers
+  * @str: string number to be converted
+  * Return: number converted
+  */
+
+int _atoi(char *str)
+{
+	int i, num = 0;
+
+	for (i = 0; str[i]; i++)
+	{
+		num *= 10;
+		num += (str[i] - '0');
+	}
+	return (num);
+}
